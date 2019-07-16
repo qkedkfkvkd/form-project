@@ -137,9 +137,8 @@
 	
 	$('#endDate').datepicker('option', 'dateFormat', 'yy-mm-dd');
 	
-	
-	
 	let d = new Date();
+	
 	let year = d.getFullYear();
 	let month = d.getMonth()+1;
 	let day = d.getDate();
@@ -148,16 +147,47 @@
 	console.log(`month : ${month}`);
 	console.log(`day : ${day}`);
 	
+	
 	let beginDate = d;
 	let endDate = d;
 	$('#btnWeek').click(function() {
+		let beDate = $('#beginDate').val();
+		
+		//console.log(`beDate : ${beDate}`);
+		//console.log(`beDateYear : ${beDate.substr(0,4)}`);
+		//console.log(`beDateMonth : ${beDate.substr(5,2)}`);
+		//console.log(`beDateDay : ${beDate.substr(8,2)}`);
+		
+		beginDate.setFullYear(beDate.substr(0,4), beDate.substr(5,2)-1, beDate.substr(8,2));
+		
 		endDate.setDate(beginDate.getDate() + 7);
 		$('#endDate').val(`${endDate.getFullYear()}-${endDate.getMonth()+1}-${endDate.getDate()}`);
 		// 월은 0(배열과 같이)에서 시작된다.
 	});
 	
-	//$('#beginDate').val(`${year}-${month}-${day}`);
-	//$('#endDate').val(`${year}-${month}-${day}`);
+	
+	$('#btnMonth').click(function() {
+		let beDate = $('#beginDate').val();
+		
+		beginDate.setFullYear(beDate.substr(0,4), beDate.substr(5,2)-1, beDate.substr(8,2));
+		
+		beginDate.setMonth(beginDate.getMonth()+1);
+		$('#endDate').val(`${endDate.getFullYear()}-${endDate.getMonth()+1}-${endDate.getDate()}`);
+		// 월은 0(배열과 같이)에서 시작된다.
+	});
+	
+	
+	$('#btn3Month').click(function() {
+		let beDate = $('#beginDate').val();
+		
+		beginDate.setFullYear(beDate.substr(0,4), beDate.substr(5,2)-1, beDate.substr(8,2));
+		
+		beginDate.setMonth(beginDate.getMonth()+3);
+		$('#endDate').val(`${endDate.getFullYear()}-${endDate.getMonth()+1}-${endDate.getDate()}`);
+		// 월은 0(배열과 같이)에서 시작된다.
+	});
+	
+	
 	
 	$('#tip').popover();
 	
