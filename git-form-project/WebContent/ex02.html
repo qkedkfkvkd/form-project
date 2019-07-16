@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+/* Make the image fully responsive */
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+    <h3>탭, 움직이는 배너 실습</h3>
+    <h4>참고 http://www.hrd.go.kr/hrdp/ma/pmmao/main2.do</h4>
+    <div class="container">
+        <div class="row">
+            <!-- 탭 -->
+            <div class="col-sm-8">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                        href="#menu1">Menu 1</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                        href="#menu2">Menu 2</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- 첫번째 탭 -->
+                    <div class="tab-pane container" id="menu1"><!-- 41 ~ 42번 링크와 id(menu1)로 연결된다.  -->
+                        <a href="#" id="tip" data-toggle="popover" title="Popover Header" data-content="텍스트박스 클릭시 달력이 나옵니다."><!-- 설명 -->
+                        	<span class="badge badge-success">Tip</span><!-- 버튼 -->
+                        </a>
+                    
+	                    <div>
+	                    	<input id="beginDate" type="text">
+	                    	<input id="endDate" type="text">
+	                    	<button id="btnWeek">1주일</button>
+	                    	<button id="btnMonth">1개월</button>
+	                    	<button id="btn3Month">3개월</button>
+	                    </div>
+                    </div>
+                    
+                    <!-- 두번째 탭 -->
+                    <div class="tab-pane container" id="menu2"><!-- 43 ~ 44번 링크와 id(menu1)로 연결된다.  -->
+                        <!-- 시(도) 선택버턴 -->
+                        <div>
+                            <button id="btnSeoul" class="btn btn-info">서울</button>
+                            <button class="btn btn-info">인천</button>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <!-- 선택시(도) -->
+                                <label id="targetLabel" for="comment"></label>
+                                <!-- 선택시(도) 항목 -->
+                                <textarea id="targetTextarea" class="form-control" rows="5"></textarea>
+                                <button class="btn btn-secondary">검색</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+ 
+            <!-- 배너 -->
+            <div class="col-sm-4">
+ 
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+ 
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ul><!-- 움직이는 그림 하단에 보이는 동그라미 같은 것(특정 동그라미 클릭시 해당 위치의 그림이 보인다.) -->
+ 
+                    <!-- The slideshow -->
+                    <div class="carousel-inner"><!-- 그림 리스트 배열. active 라고 써있는 그림부터 화면에 보여라. -->
+                        <div class="carousel-item active">
+                            <img src="img/la.jpg" alt="Los Angeles" width="1100" height="500">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/chicago.jpg" alt="Chicago" width="1100" height="500">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/ny.jpg" alt="New York" width="1100" height="500">
+                        </div>
+                    </div>
+ 
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    	<span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                    	<span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+	$('#beginDate').datepicker({
+		showOn: "button",
+		buttonImage: "img/date.png",
+		buttonImageOnly: true,
+		buttonText: "Select date"
+	});
+	$('#beginDate').datepicker('option', 'dateFormat', 'yy-mm-dd');
+	
+	$('#endDate').datepicker({
+		showOn: "button",
+		buttonImage: "img/date.png",
+		buttonImageOnly: true,
+		buttonText: "Select date"
+	});
+	
+	$('#endDate').datepicker('option', 'dateFormat', 'yy-mm-dd');
+	
+	
+	
+	let d = new Date();
+	let year = d.getFullYear();
+	let month = d.getMonth()+1;
+	let day = d.getDate();
+	
+	console.log(`year : ${year}`);
+	console.log(`month : ${month}`);
+	console.log(`day : ${day}`);
+	
+	let beginDate = d;
+	let endDate = d;
+	$('#btnWeek').click(function() {
+		endDate.setDate(beginDate.getDate() + 7);
+		$('#endDate').val(`${endDate.getFullYear()}-${endDate.getMonth()+1}-${endDate.getDate()}`);
+		// 월은 0(배열과 같이)에서 시작된다.
+	});
+	
+	//$('#beginDate').val(`${year}-${month}-${day}`);
+	//$('#endDate').val(`${year}-${month}-${day}`);
+	
+	$('#tip').popover();
+	
+    $('#btnSeoul').click(function() {
+        console.log('#btnSeoul click');
+        $('#targetLabel').text('서울');
+        let str = '';
+        str += '강남구';
+        str += '\t강동구';
+        str += '\n강북구';
+        str += '\t강서구';
+        $('#targetTextarea').val(str);
+    });
+	
+//	$(document).ready(function(){
+//    	$('#tip').popover();
+//	});
+	
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h3>로그인 클릭시 뒷배경 블럭처리 및 로그인 모달</h3>
+	<h4>참고 사이트 https://marymond.kr/main/index</h4>
+	<button class="btn btn-success" data-backdrop="static" data-toggle="modal" data-target="#myModal">로그인</button>
+	
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">    
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body">
+					<button type="button" class="btn btn-outline-primary btn-block">facebook 아이디로 로그인</button>
+					<button type="button" class="btn btn-outline-success btn-block">naver 아이디로 로그인</button>
+					<button type="button" class="btn btn-outline-warning btn-block">kakao 아이디로 로그인</button>
+					
+					<h6>로그인</h6>
+					<form action="/git-form-project/ex01.html" method="post">
+        				<input type="text" class="form-control" placeholder="아이디를 입력해주세요.">
+        				<input type="password" class="form-control" placeholder="비밀번호를 입력해주세요.">
+        				<button class="btn btn-dark btn-block">로그인</button>
+        			</form>
+        			<a href="/git-form-project/ex01.html" class="btn btn-block">아이디 / 비밀번호 찾기</a>
+        			<a href="/git-form-project/ex01.html" class="btn btn-block">비회원 주문조회</a> <hr>
+        			<a href="/git-form-project/ex01.html" class="btn btn-outline-danger btn-block">MARYMOND회원가입</a>
+        			<a href="/git-form-project/ex01.html" class="btn btn-block">고객센터</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end the Modal -->
+</div>
+</body>
+</html>
